@@ -1,0 +1,38 @@
+function Figure() {}
+Figure.prototype.calcSquare = function () {
+    return 'abstract method'
+}
+
+function Square(width) {
+  Figure.call(this)
+  this.width = width
+}
+Square.prototype = Object.create(Figure.prototype);
+Square.prototype.constructor = Square;
+
+Square.prototype.calcSquare = function() {
+  return this.width * this.width
+}
+
+function Round(radius) {
+  Figure.call(this)
+  this.radius = radius
+}
+Round.prototype = Object.create(Figure.prototype);
+Round.prototype.constructor = Round;
+
+Round.prototype.calcSquare = function() {
+  return this.radius * this.radius * Math.PI //or Math.sqrt(this.radius) * Math.PI  
+}
+
+function Rectangle(width, length) {
+  Figure.call(this)
+  this.width = width
+  this.length = length
+}
+Rectangle.prototype = Object.create(Figure.prototype);
+Rectangle.prototype.constructor = Rectangle;
+
+Rectangle.prototype.calcSquare = function() {
+  return this.width * this.length;
+}
